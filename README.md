@@ -71,7 +71,7 @@ POST /predict
 
 ```bash
 git clone https://github.com/TanushMM/Optimized-Phishing-Detection-with-RNN-and-Whale-Optimization.git
-cd phishing-rnn-woa
+cd Optimized-Phishing-Detection-with-RNN-and-Whale-Optimization
 ```
 
 ### 2. Install Backend Dependencies
