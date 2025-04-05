@@ -23,7 +23,7 @@ app.add_middleware(
 model = load_model("./model.h5")
 
 # Load trained MinMaxScaler
-with open("scaler.pkl", "rb") as f:
+with open("./scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
 class InputFeatures(BaseModel):
