@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import "./PhishingDetector.css"
 
-export default function App() {
+export default function PhishingDetector() {
   const [url, setUrl] = useState("")
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
