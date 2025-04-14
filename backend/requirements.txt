@@ -2,6 +2,9 @@ fastapi
 uvicorn
 nest_asyncio
 numpy
+pandas
 scikit-learn
 tensorflow
 pydantic
+beautifulsoup4
+joblib
