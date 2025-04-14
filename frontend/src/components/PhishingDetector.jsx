@@ -53,7 +53,7 @@ export default function PhishingDetector() {
             className={`result ${
               result.error
                 ? "danger"
-                : result.prediction === "phishing"
+                : result.prediction === "Phishing"
                 ? "danger"
                 : "safe"
             } fade-in-slow`}

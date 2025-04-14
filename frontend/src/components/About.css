@@ -1,37 +1,54 @@
 .about-container {
-    padding: 40px;
-    background: #f8f9fa;
-    color: #2c3e50;
-    line-height: 1.6;
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  .project-details ol {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
-  
-  .project-details li {
-    margin: 10px 0;
-  }
-  
-  .back-button-wrapper {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .back-button {
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 10px;
-    background: #0077ff;
-    color: white;
-    font-weight: bold;
-    transition: transform 0.2s, background-color 0.3s;
-  }
-  
-  .back-button:hover {
-    transform: scale(1.05);
-    background-color: #005fcc;
-  }
-  
+  padding: 40px;
+  background: #f8f9fa;
+  color: #2c3e50;
+  line-height: 1.6;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.project-details, .team-section, .acknowledgements {
+  margin: 20px 0;
+}
+
+.project-details ol {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.project-details li {
+  margin: 10px 0;
+}
+
+.image-section {
+  margin: 20px 0;
+}
+
+.image-section img {
+  max-width: 100%; /* Ensures the image width does not exceed the container */
+  height: auto;    /* Maintains the aspect ratio */
+  display: block;  /* Removes any extra space around the image */
+  margin: 0 auto;  /* Centers the image horizontally within its container */
+  border-radius: 10px; /* Optional: Adds rounded corners for a cleaner look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for emphasis */
+}
+
+
+.back-button-wrapper {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.back-button {
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: #0077ff;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.back-button:hover {
+  transform: scale(1.05);
+  background-color: #005fcc;
+}
