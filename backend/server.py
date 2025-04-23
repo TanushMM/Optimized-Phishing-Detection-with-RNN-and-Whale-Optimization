@@ -121,9 +121,33 @@ def extract_features(url):
 @app.post("/predict")
 def predict(input: URLInput):
     try:
+        import re
+        url_pattern = r"^(http|https):\/\/www\.[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$"
+        if not re.match(url_pattern, input.url):
+            return {"url": input.url, "prediction": "Invalid URL format. Please provide a valid URL with http/https, www, and a domain with a TLD (e.g., .com, .org)."}
+
+        import socket
+        def is_internet_available():
+            try:
+                # Attempt to create a socket connection to Google's DNS server
+                socket.create_connection(("8.8.8.8", 53), timeout=5)
+                return True
+            except OSError:
+                return False
+
+        if not is_internet_available():
+            return {
+                "url": input.url,
+                "prediction": "No internet connection available. Please check your network and try again."
+            }
+
         # Extract all 55 features as a DataFrame with column names
         features = extract_features(input.url)
-        
+        print(features)
+
+        if "prediction" in features:
+            return {"url": input.url, "prediction": "Phishing"}
+        print("------------------------------------------------------")
         selected_keys = [
         'URLSimilarityIndex', 'NoOfOtherSpecialCharsInURL', 'IsHTTPS',
         'LineOfCode', 'HasDescription', 'NoOfiFrame', 'HasSocialNet',
@@ -134,21 +158,17 @@ def predict(input: URLInput):
         print("Feature Array: ", features_array)
         features_reshaped = features_array.reshape((features_array.shape[0], features_array.shape[1], 1))
         print("Reshaped Feature Array: ", features_reshaped)
-        
+
         prediction = model.predict(features_reshaped)
         print("Prediction: ", prediction)
-        
+
         label = None
         for i, pred in enumerate(prediction):
             label = "Phishing" if pred <= 0.5 else "Legitimate"
-        
+
         return {"url": input.url, "prediction": label}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/")
-def read_root():
-    return {"message": "Phishing Detection API is live!"}
 
 
 import nest_asyncio
